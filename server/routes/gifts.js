@@ -1,9 +1,16 @@
-import express from 'express'
-import { getGifts } from '../controllers/gifts.js'
+import express from "express";
+import GiftsController from "../controllers/gifts.js";
 
-const router = express.Router()
+const router = express.Router();
 
-// GET /gifts/
-router.get('/', getGifts)
+router.get("/", GiftsController.getGifts);
 
-export default router
+router.get("/:giftId", GiftsController.getGiftById);
+
+router.post("/", GiftsController.createGift);
+
+router.delete("/:id", GiftsController.deleteGift);
+
+router.patch("/:id", GiftsController.updateGift);
+
+export default router;
